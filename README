@@ -14,7 +14,26 @@ automatically by Evas, that will display the surface when possible, or hide it
 and use the buffer pixel data to compose it with the rest of the canvas
 otherwise.
 
+How To Use
+==========
+
+Run "make" and the main program should be built. Latest EFL (master) is
+required, and Elementary too. Run it with:
+
+ $ ECORE_EVAS_ENGINE="wayland_shm" ./main
+
+It's possible to use "wayland_egl" engine too. If one wants to know when the
+subsurface is created and used, instead of the pixel buffer, just set the eina
+log levels accordingly:
+
+ $ EINA_LOG_LEVELS="buffer_object:4" ECORE_EVAS_ENGINE="wayland_egl" ./main
+
+This example simulates a video decoded on the pixel buffer. A real video
+decoding example should be implemented later.
+
+
 TODO:
+====
  - better reporting of when the pixel buffer is not "released":
    Currently this reporting is not correct, the point where we can say that a
    wl_buffer is released (using wayland callbacks) is not the same where a
