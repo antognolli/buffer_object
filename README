@@ -1,0 +1,27 @@
+Buffer_Object
+=============
+
+A skeleton implementation for using Wayland subsurfaces with Evas image objects
+and their Evas_Video_Surface API.
+
+This implementation will configure an image object with the callbacks for show,
+hide, move, resize and update_pixels of the Video Surface, using
+Ecore_Wl_Subsurf related APIs, which provide Wayland subsurfaces handling.
+
+So far the API is very small, and not so flexible, but it's enough to allow an
+application to set a buffer on an image object and let it be handled
+automatically by Evas, that will display the surface when possible, or hide it
+and use the buffer pixel data to compose it with the rest of the canvas
+otherwise.
+
+TODO:
+ - better reporting of when the pixel buffer is not "released":
+   Currently this reporting is not correct, the point where we can say that a
+   wl_buffer is released (using wayland callbacks) is not the same where a
+   pixel buffer of the said image is released. Additionally, the pixel buffer
+   is used several times (it seems that at least once per frame).
+
+ - Add APIs to configure some other aspects of the subsurface, like the
+   capabilities. One might want to change if the subsurface will be placed
+   above or below the canvas, or other options if needed.
+
