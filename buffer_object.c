@@ -67,7 +67,7 @@ _buffer_object_wl_buffer_update(Buffer_Object *bo)
 
    wl_surface_attach(bo->surface, bo->wlb, 0, 0);
    wl_surface_damage(bo->surface, 0, 0, bo->width, bo->height);
-   wl_surface_commit(bo->surface);
+   ecore_wl_subsurf_commit(bo->subsurf);
 }
 
 static void

@@ -286,6 +286,7 @@ elm_main(int argc, char **argv)
 
    win = elm_win_util_standard_add(NULL, "bg-image");
    elm_win_title_set(win, "Bg Image");
+   elm_win_alpha_set(win, EINA_TRUE);
    elm_win_autodel_set(win, EINA_TRUE);
 
    d.win = win;
