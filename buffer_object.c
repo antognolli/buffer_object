@@ -134,6 +134,7 @@ _buffer_object_show(void *data, Evas_Object *obj EINA_UNUSED, const Evas_Video_S
      }
 
    win_surf = ecore_wl_window_surface_get(bo->win);
+   ecore_wl_subsurf_place_below(bo->subsurf, win_surf);
 
    ecore_wl_subsurf_position_set(bo->subsurf, bo->x, bo->y);
 
